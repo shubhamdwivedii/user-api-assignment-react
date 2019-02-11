@@ -9,6 +9,7 @@ import User from './components/user';
 import Login from './components/login';
 import Logout from "./components/logout";
 import Signup from './components/signup';
+import CreateNote from './components/createNote';
 import NavBar from './components/navbar';
 import loginService from './services/loginService';
 
@@ -37,7 +38,7 @@ class App extends Component {
             {/* <Route path="/login" component={Login} /> */}
             <Route path="/signup" component={Signup} />
             <Route path="/user/logout" component={Logout} />
-            
+            <Route path="/user/note" component={CreateNote} />
             <Route path="/user" render={props => <User user={this.state.user} {...props} /> } />            
             {/* <Route path="/user" component={User} /> */}
 

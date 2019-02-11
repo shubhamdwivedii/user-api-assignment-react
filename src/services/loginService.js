@@ -8,9 +8,10 @@ const apiEndpoint = apiUrl + "/login"; //"http://localhost:5000/api/login";// ap
 const tokenKey = 'token';
 
 export async function login(email,password){
-
+    console.log("loginUrl: "+ apiEndpoint)
     // toast("You are now logged-in!!");
     // return http.post(apiEndpoint, { email, password})
+    console.log("loginService Called")
     const { data: jwt } = await http.post(apiEndpoint, { email, password})
     localStorage.setItem(tokenKey,jwt);
 }

@@ -10,7 +10,7 @@ axios.interceptors.response.use(null, error => {
 
   if (!expectedError) {
     logger.log(error);
-    toast.error("An unexpected error occurrred.");
+    toast.error("Server is not responding.\nCheck if backend is running...");
   }
 
   return Promise.reject(error);
@@ -25,6 +25,7 @@ export default {
   get: axios.get,
   post: axios.post,
   put: axios.put,
+  patch: axios.patch,
   delete: axios.delete,
   setJwt
 };

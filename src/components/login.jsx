@@ -4,7 +4,7 @@ import Joi from 'joi-browser';
 
 import Form from './common/form';
 import loginService from '../services/loginService';
-
+import { toast } from "react-toastify";
 
 
 class Login extends Form {
@@ -29,10 +29,10 @@ class Login extends Form {
 
     doSubmit = async () => {
         //Call the server and save changes then redirect data 
-        console.log('Submitted');
+        
         try{
             const { data } = this.state;
-
+            console.log( data );
             await loginService.login(data.email, data.password);
             //const { data: jwt } = await login(data.email, data.password);
             //console.log(jwt);
@@ -41,9 +41,10 @@ class Login extends Form {
             //now redirect user to homepage 
             //this.props.history.push('/');
             window.location = '/user';
-            
+            console.log('Submitted');
         }
         catch(ex){
+            toast.error("Invalid Email-id or Password.");
             if(ex.response && ex.response.status === 400){
                 const errors = {...this.state.errors};
                 errors.email = ex.response.data;  
@@ -55,7 +56,7 @@ class Login extends Form {
     }
 
     render() { 
-         
+            
 
         return (
         <div className="container">
@@ -67,14 +68,17 @@ class Login extends Form {
                 <div className="col"> 
                     <br/>
                     <br/>
-                    <div className="jumbotron">              
-                        <h1>Login</h1>
-                        <form onSubmit={this.handleSubmit}>
-                            {this.renderInput("email","Email Id")} 
-                            {this.renderInput("password","Password", "password")}
-                            {this.renderButton('Login')}
-                        </form>
-                    </div>    
+                    <div className="card bg-secondary text-white">
+                        <div className="card-header"><h2>Login</h2></div>
+                        <div className="card-body">              
+                        
+                            <form onSubmit={this.handleSubmit}>
+                                {this.renderInput("email","Email Id","text", "Email Id")} 
+                                {this.renderInput("password","Password", "password","Password")}
+                                {this.renderButton('Login')}
+                            </form>
+                        </div> 
+                    </div>   
                 </div>
             </div>    
 

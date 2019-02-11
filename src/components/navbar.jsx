@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 //Stateless Functional Component 
 const NavBar = ({ user }) => {
     return ( 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             {/* <a className="navbar-brand" href="#">Navbar</a> */}
 
             {!user && (
@@ -37,9 +37,15 @@ const NavBar = ({ user }) => {
                         {/* <NavLink className="nav-item nav-link" to="/">
                             Login
                         </NavLink> */}
-                        <NavLink className="nav-item nav-link" to="/signup">
-                           <span className="btn btn-primary">Sign-up</span> 
+                        {(window.location.pathname.includes("/signup")) 
+                        ?<NavLink className="nav-item nav-link" to="/">
+                           <span className="btn btn-primary">Log-in</span> 
                         </NavLink>
+                        :<NavLink className="nav-item nav-link" to="/signup">
+                            <span className="btn btn-primary">Sign-up</span> 
+                        </NavLink>            
+                        }
+                        
                     </React.Fragment> )}
                     {user && (
                     <React.Fragment>

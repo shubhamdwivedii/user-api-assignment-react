@@ -62,14 +62,16 @@ class Signup extends Form {
                     <div className="col"> 
                         <br/>
                         <br/>
-                        <div className="jumbotron">              
-                            <h1>SignUp</h1>
-                            <form onSubmit={this.handleSubmit}>
-                                {this.renderInput("name","User Name")}
-                                {this.renderInput("email","Email Id")} 
-                                {this.renderInput("password","Password", "password")}
-                                {this.renderButton('SignUp')}
-                            </form>
+                        <div className="card bg-secondary text-white">              
+                           <div className="card-header"><h2>SignUp</h2></div> 
+                           <div className="card-body">
+                                <form onSubmit={this.handleSubmit}>
+                                    {this.renderInput("name","User Name","text","User Name")}
+                                    {this.renderInput("email","Email Id","text","Email Id")} 
+                                    {this.renderInput("password","Password", "password","Password")}
+                                    {this.renderButton('SignUp')}
+                                </form>
+                            </div>
                         </div>    
                     </div>
                 </div>    
